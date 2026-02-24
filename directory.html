@@ -492,6 +492,23 @@
             contacts verified as of February 23, 2026.</p>
     </footer>
 
+    <!-- PROPERTY AI ASSISTANT WIDGET -->
+    <iframe src="ai-agent.html"
+        style="position: fixed; bottom: 0; right: 0; width: 400px; height: 650px; border: none; z-index: 10000; pointer-events: none;"
+        id="ai-agent-iframe"></iframe>
+
+    <script>
+        // This allows clicking through the iframe to the button underneath when collapsed
+        window.addEventListener('message', function (e) {
+            const iframe = document.getElementById('ai-agent-iframe');
+            if (e.data === 'expand') {
+                iframe.style.pointerEvents = 'auto';
+            } else if (e.data === 'collapse') {
+                iframe.style.pointerEvents = 'none';
+            }
+        });
+    </script>
+
     <script>
         const DEFAULT_SVG = `data:image/svg+xml;base64,${btoa('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="hsl(85, 55%, 55%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>')}`;
 

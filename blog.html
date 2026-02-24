@@ -535,6 +535,23 @@
         </svg>
     </div>
 
+    <!-- PROPERTY AI ASSISTANT WIDGET -->
+    <iframe src="ai-agent.html"
+        style="position: fixed; bottom: 0; right: 0; width: 400px; height: 650px; border: none; z-index: 10000; pointer-events: none;"
+        id="ai-agent-iframe"></iframe>
+
+    <script>
+        // This allows clicking through the iframe to the button underneath when collapsed
+        window.addEventListener('message', function (e) {
+            const iframe = document.getElementById('ai-agent-iframe');
+            if (e.data === 'expand') {
+                iframe.style.pointerEvents = 'auto';
+            } else if (e.data === 'collapse') {
+                iframe.style.pointerEvents = 'none';
+            }
+        });
+    </script>
+
 </body>
 
 </html>
