@@ -285,28 +285,59 @@
         */
         const OPENROUTER_API_KEY = "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"; // Will be replaced by GitHub Actions
         const MODEL_ID = "stepfun/step-3.5-flash:free";
+        let SITE_DATA = null;
 
-        // SYSTEM PROMPT: This defines the AI's personality and knowledge base.
-        const SYSTEM_PROMPT = `
-You are a professional UK Property Investment Assistant for the Property Podcast. 
-Your goal is to provide helpful, data-driven advice to property investors and home buyers.
+        // Base System Prompt - will be augmented with SITE_DATA if available
+        let SYSTEM_PROMPT = `
+You are the "Property Investor Assistant" for the Property Investors Podcast.
+Your goal is to help users with UK property investment advice, directory searches, and blog insights.
+Current Date: 2026-02-24
 
-KNOWLEDGE BASE (LATEST TRENDS - FEB 2026):
-- House Prices: Expected to rise 1-4% in 2026. Savills predicts 2%, Nationwide 2-4%.
-- Mortgage Rates: Average rates around 4.91% as of early 2026, with downward pressure expected.
-- Hotspots: Strong growth in North of England, Scotland, and Wales. Cities like Manchester, Liverpool, Bradford, and Leicester are top picks due to affordability and regeneration.
-- London: More modest growth, potential real-term declines in high-tax brackets.
-- Rental Market: Demand remains high, supply low. Landlord exit continues due to tax/regulatory changes.
-- Commercial: Stability and income focus. Industrial/logistics and data centers are strong sectors.
+INSTRUCTIONS:
+1. SITE AWARENESS: Use the provided Directory and Blog data to answer specific questions about companies or articles on this site.
+2. MARKET DATA: Cite the 2026 market trends (house prices, base rates) when relevant.
+3. DIRECTORY: If a user asks for a company or location, search the directory data.
+4. SEARCH: If you don't have enough info, explain that you are searching your site-specific knowledge base.
 
 STYLE GUIDELINES:
 - Be professional, concise, and insightful.
 - Use British English and currency (£).
 - Always recommend consulting with a financial advisor for specific investment decisions.
-- If you don't know something, offer to let them search or check the podcast archives.
 `;
 
         let chatHistory = [{ role: "system", content: SYSTEM_PROMPT }];
+
+        // Load site knowledge base on initialization
+        async function initKnowledgeBase() {
+            try {
+                const response = await fetch('site-data.json');
+                if (response.ok) {
+                    SITE_DATA = await response.json();
+                    augmentSystemPrompt();
+                }
+            } catch (e) {
+                console.warn("Could not load site-data.json, using base knowledge.");
+            }
+        }
+
+        function augmentSystemPrompt() {
+            if (!SITE_DATA) return;
+
+            const knowledgeStr = `
+--- SITE KNOWLEDGE BASE ---
+DIRECTORY DATA: ${JSON.stringify(SITE_DATA.directory)}
+BLOG SUMMARIES: ${JSON.stringify(SITE_DATA.blog_summaries)}
+MARKET TRENDS 2026: ${JSON.stringify(SITE_DATA.market_trends_2026)}
+---------------------------
+`;
+            SYSTEM_PROMPT += knowledgeStr;
+            chatHistory[0].content = SYSTEM_PROMPT;
+
+            // Add a welcome message from the AI if it's the first load
+            addMessage("Hi! I'm your Property Assistant. I've just loaded our latest directory and property insights. How can I help you today?", 'ai');
+        }
+
+        initKnowledgeBase();
 
         function toggleChat() {
             const window = document.getElementById('ai-chat-window');
@@ -341,6 +372,13 @@ STYLE GUIDELINES:
 
             // Show typing indicator
             const typingId = addTypingIndicator();
+
+            // Safety check for API Key
+            if (OPENROUTER_API_KEY === "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") {
+                removeTypingIndicator(typingId);
+                addMessage("⚠️ **API Key Missing**: It looks like you're testing locally. Please replace the `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` placeholder in `ai-agent.html` with your actual OpenRouter key to test. For the live site, ensure you've added the `OPENROUTER_API_KEY` secret to your GitHub repository settings.", 'ai');
+                return;
+            }
 
             try {
                 const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
