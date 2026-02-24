@@ -244,7 +244,12 @@
         <div id="ai-chat-window">
             <div id="ai-header">
                 <div>
-                    <h3>Property AI Assistant</h3>
+                    <h3 style="display: flex; align-items: center; gap: 8px;">
+                        Property AI Assistant
+                        <span id="data-status"
+                            style="font-size: 0.6rem; background: rgba(0,255,0,0.2); border: 1px solid #4ade80; color: #4ade80; padding: 1px 4px; border-radius: 4px; opacity: 0; transition: opacity 0.5s;">LIVE
+                            DATA</span>
+                    </h3>
                     <div style="font-size: 0.7rem; opacity: 0.9;">Powered by Step-3.5</div>
                 </div>
                 <button class="close-btn" onclick="toggleChat()">×</button>
@@ -289,20 +294,17 @@
 
         // Base System Prompt - will be augmented with SITE_DATA if available
         let SYSTEM_PROMPT = `
-You are the "Property Investor Assistant" for the Property Investors Podcast.
-Your goal is to help users with UK property investment advice, directory searches, and blog insights.
+You are the "Property Investor Assistant" for the Property Investors Podcast / Property Intelligence Hub.
+Your PRIMARY MISSION is to use the specific site knowledge provided below to answer user questions.
+
+CRITICAL INSTRUCTIONS:
+1. DATA PRIORITY: ALWAYS check the "SITE KNOWLEDGE BASE" sections below BEFORE using your general training.
+2. COMPANY QUERIES: If a user asks about a company (like "SB Properties"), use the DIRECTORY DATA. Do NOT say you don't know if the data is present in the provided list.
+3. LEGISLATION: Use the specific dates and rules for Renters' Rights 2026 and EPC 2030 Roadmap provided in the knowledge base.
+4. TONE: Professional, British English, concise. Cite the specific site data when answering.
+5. DISCLAIMER: Always remind users to consult a financial advisor for specific investment decisions.
+
 Current Date: 2026-02-24
-
-INSTRUCTIONS:
-1. SITE AWARENESS: Use the provided Directory and Blog data to answer specific questions about companies or articles on this site.
-2. MARKET DATA: Cite the 2026 market trends (house prices, base rates) when relevant.
-3. DIRECTORY: If a user asks for a company or location, search the directory data.
-4. SEARCH: If you don't have enough info, explain that you are searching your site-specific knowledge base.
-
-STYLE GUIDELINES:
-- Be professional, concise, and insightful.
-- Use British English and currency (£).
-- Always recommend consulting with a financial advisor for specific investment decisions.
 `;
 
         let chatHistory = [{ role: "system", content: SYSTEM_PROMPT }];
@@ -325,16 +327,21 @@ STYLE GUIDELINES:
 
             const knowledgeStr = `
 --- SITE KNOWLEDGE BASE ---
-DIRECTORY DATA: ${JSON.stringify(SITE_DATA.directory)}
-BLOG SUMMARIES: ${JSON.stringify(SITE_DATA.blog_summaries)}
-MARKET TRENDS 2026: ${JSON.stringify(SITE_DATA.market_trends_2026)}
+DIRECTORY_REGISTRY: ${JSON.stringify(SITE_DATA.directory)}
+BLOG_SUMMARIES: ${JSON.stringify(SITE_DATA.blog_articles)}
+LEGISLATION_GUIDES: ${JSON.stringify(SITE_DATA.legislation_2026)}
+MARKET_TRENDS_2026: ${JSON.stringify(SITE_DATA.market_trends_2026)}
 ---------------------------
 `;
             SYSTEM_PROMPT += knowledgeStr;
             chatHistory[0].content = SYSTEM_PROMPT;
 
+            // Show 'Live Data' badge
+            const statusBadge = document.getElementById('data-status');
+            if (statusBadge) statusBadge.style.opacity = '1';
+
             // Add a welcome message from the AI if it's the first load
-            addMessage("Hi! I'm your Property Assistant. I've just loaded our latest directory and property insights. How can I help you today?", 'ai');
+            addMessage("Hi! I'm your Property Assistant. I've strictly loaded our 2026 directory and legislation guides. How can I help you today?", 'ai');
         }
 
         initKnowledgeBase();
