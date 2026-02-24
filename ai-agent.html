@@ -283,7 +283,7 @@
             CONFIGURATION CONSTANTS
             Update these to change the AI's core behavior.
         */
-        const OPENROUTER_API_KEY = ""; // Will be replaced by GitHub Actions
+        const OPENROUTER_API_KEY = "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"; // Will be replaced by GitHub Actions
         const MODEL_ID = "stepfun/step-3.5-flash:free";
 
         // SYSTEM PROMPT: This defines the AI's personality and knowledge base.
@@ -346,7 +346,7 @@ STYLE GUIDELINES:
                 const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
                     method: "POST",
                     headers: {
-                        "Authorization": \`Bearer \${OPENROUTER_API_KEY}\`,
+                        "Authorization": `Bearer ${OPENROUTER_API_KEY}`,
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify({
@@ -377,15 +377,15 @@ STYLE GUIDELINES:
         function addMessage(text, sender) {
             const container = document.getElementById('ai-messages');
             const msgDiv = document.createElement('div');
-            msgDiv.className = \`message \${sender}\`;
-            
+            msgDiv.className = `message ${sender}`;
+
             // Use marked for AI messages to render markdown
             if (sender === 'ai' && window.marked) {
                 msgDiv.innerHTML = marked.parse(text);
             } else {
                 msgDiv.textContent = text;
             }
-            
+
             container.appendChild(msgDiv);
             container.scrollTop = container.scrollHeight;
         }
