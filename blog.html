@@ -537,17 +537,19 @@
 
     <!-- PROPERTY AI ASSISTANT WIDGET -->
     <iframe src="ai-agent.html"
-        style="position: fixed; bottom: 0; right: 0; width: 400px; height: 650px; border: none; z-index: 10000; pointer-events: none;"
+        style="position: fixed; bottom: 0; right: 0; width: 100px; height: 100px; border: none; z-index: 10000; transition: all 0.3s ease;"
         id="ai-agent-iframe"></iframe>
 
     <script>
-        // This allows clicking through the iframe to the button underneath when collapsed
+        // Automatically resize the iframe when the chat expands/collapses
         window.addEventListener('message', function (e) {
             const iframe = document.getElementById('ai-agent-iframe');
             if (e.data === 'expand') {
-                iframe.style.pointerEvents = 'auto';
+                iframe.style.width = '400px';
+                iframe.style.height = '650px';
             } else if (e.data === 'collapse') {
-                iframe.style.pointerEvents = 'none';
+                iframe.style.width = '100px';
+                iframe.style.height = '100px';
             }
         });
     </script>
