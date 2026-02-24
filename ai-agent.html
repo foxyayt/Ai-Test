@@ -380,10 +380,11 @@ MARKET_TRENDS_2026: ${JSON.stringify(SITE_DATA.market_trends_2026)}
             // Show typing indicator
             const typingId = addTypingIndicator();
 
-            // Safety check for API Key
-            if (OPENROUTER_API_KEY === "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") {
+            // Safety check for API Key (using split string to avoid sed replacement in the check itself)
+            const placeholder = "__" + "OPENROUTER_API_KEY" + "__";
+            if (OPENROUTER_API_KEY === placeholder || !OPENROUTER_API_KEY || OPENROUTER_API_KEY.length < 10) {
                 removeTypingIndicator(typingId);
-                addMessage("⚠️ **API Key Missing**: It looks like you're testing locally. Please replace the `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` placeholder in `ai-agent.html` with your actual OpenRouter key to test. For the live site, ensure you've added the `OPENROUTER_API_KEY` secret to your GitHub repository settings.", 'ai');
+                addMessage("⚠️ **Configuration Error**: The AI API Key is missing or invalid. Please ensure you have set up the `OPENROUTER_API_KEY` correctly in your GitHub Secrets or local file.", 'ai');
                 return;
             }
 
