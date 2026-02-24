@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior: smooth;">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3YMMMBS73T"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-3YMMMBS73T');
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UK Property Investors Directory: 2026 Verified Buyer Map</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <meta name="description"
+        content="A comprehensive, searchable directory of verified UK property investors, cash buyers, and institutional landlords. Featuring local experts and national operators." />
+
+    <!-- Social Media Previews (Open Graph & Twitter) -->
+    <meta property="og:title" content="UK Property Investors Directory: 2026 Verified Buyer Map" />
+    <meta property="og:description"
+        content="Searchable directory of verified UK property investors, cash buyers, and institutional landlords." />
+    <meta property="og:image"
+        content="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80" />
+    <meta property="og:url" content="https://propertyinvestorspodcast.com/directory.html" />
+    <meta property="og:type" content="website" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="UK Property Investors Directory" />
+    <meta name="twitter:description" content="Connect with verified UK property investors and cash buyers." />
+    <meta name="twitter:image"
+        content="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80" />
+
+    <link rel="canonical" href="https://propertyinvestorspodcast.com/directory.html" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --card-bg: #161616;
+            --card-hover: #1c1c1c;
+            --text-primary: #f5f5f5;
+            --text-secondary: #999999;
+            --accent: hsl(85, 55%, 55%);
+            --accent-hover: hsl(85, 60%, 65%);
+            --border: rgba(255, 255, 255, 0.08);
+            --glass-bg: rgba(10, 10, 10, 0.75);
+            --featured-bg: rgba(122, 201, 67, 0.05);
+            --featured-border: rgba(122, 201, 67, 0.3);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding-bottom: 40px;
+        }
+
+        header {
+            position: relative;
+            z-index: 100;
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+            padding: 1.25rem 1rem;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: white;
+        }
+
+        .logo-wrapper {
+            width: 40px;
+            height: 40px;
+        }
+
+        .logo-area h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            margin: 0;
+        }
+
+        .controls {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+        }
+
+        .btn {
+            background: var(--accent);
+            color: #000;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.2s;
+            white-space: nowrap;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background: var(--accent-hover);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .hero-section {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .hero-section h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-section p {
+            color: var(--text-secondary);
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Search & Filter Bar */
+        .search-container {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 3rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 90;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .search-box {
+            flex: 2;
+            min-width: 300px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            background: #0a0a0a;
+            border: 1px solid var(--border);
+            color: white;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .search-box input:focus {
+            border-color: var(--accent);
+        }
+
+        .filter-select {
+            flex: 1;
+            min-width: 150px;
+            background: #0a0a0a;
+            border: 1px solid var(--border);
+            color: white;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        /* Directory Grid */
+        .directory-grid {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: 1fr;
+        }
+
+        @media (min-width: 768px) {
+            .directory-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .directory-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .company-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .company-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            background: var(--card-hover);
+        }
+
+        .company-card.featured {
+            grid-column: 1 / -1;
+            background: var(--featured-bg);
+            border: 1px solid var(--featured-border);
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .company-card.featured {
+                grid-template-columns: 100px 1fr 300px;
+                align-items: center;
+            }
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--accent);
+            color: #000;
+            font-size: 0.65rem;
+            font-weight: 800;
+            padding: 2px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .company-logo {
+            width: 60px;
+            height: 60px;
+            background: #222;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 800;
+            color: var(--accent);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .company-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 5px;
+        }
+
+        .featured .company-logo {
+            width: 80px;
+            height: 80px;
+            font-size: 2rem;
+        }
+
+        .company-info h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .company-type {
+            font-size: 0.75rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+
+        .company-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin: 0.5rem 0;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .featured .company-desc {
+            -webkit-line-clamp: none;
+            line-clamp: none;
+            font-size: 1.1rem;
+        }
+
+        .company-meta {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .company-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .company-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: auto;
+        }
+
+        /* Map Section */
+        .map-section {
+            margin: 4rem 0;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .map-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .map-container {
+            width: 100%;
+            height: 450px;
+            background: #111;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            filter: grayscale(1) invert(0.92) contrast(1.2);
+        }
+
+        #featured-spotlight {
+            margin-bottom: 2rem;
+        }
+
+        footer {
+            max-width: 1200px;
+            margin: 4rem auto 2rem;
+            padding: 2rem 1rem;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="logo-area">
+                <div class="logo-wrapper">
+                    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 22 C 8 10, 24 10, 28 22 L 28 26 C 24 16, 8 16, 4 26 Z" fill="var(--accent)" />
+                        <rect x="14" y="24" width="4" height="4" fill="var(--accent)" opacity="0.6" />
+                    </svg>
+                </div>
+                <h1>Property Intelligence</h1>
+            </a>
+            <div class="controls">
+                <a href="blog.html" class="btn btn-secondary">Blog</a>
+                <a href="index.html" class="btn btn-secondary">Feeds</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <span class="company-type" style="font-size: 0.9rem;">2026 Verified Directory</span>
+            <h2>UK Property Investors <span style="color: var(--accent);">Map & Registry</span></h2>
+            <p>Connect with high-volume cash buyers, institutional landlords, and local property experts across the UK.
+            </p>
+        </section>
+
+        <section id="featured-spotlight">
+            <!-- Featured Company: SB Properties UK (Always Visible Spotlight) -->
+            <div class="company-card featured" data-name="SB Properties UK" data-type="cash_buyer"
+                data-region="Scotland">
+                <span class="featured-badge">Featured Direct Buyer</span>
+                <div class="company-logo">
+                    <img src="https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://sbproperties.uk&size=128"
+                        alt="SB Properties Logo">
+                </div>
+                <div class="company-info">
+                    <span class="company-type">Local Cash Buyer (Scotland)</span>
+                    <h3>SB Properties UK</h3>
+                    <p class="company-desc">Glasgow-based property acquisition specialists. We buy residential
+                        properties off-market directly from homeowners across Central Scotland. No chains, no fees, and
+                        a solicitor-led timeline tailored to your needs.</p>
+                    <div class="company-meta">
+                        <span>📍 Caledonia House, 89 Seaward Street, Glasgow, G41 1HJ</span>
+                        <span>📞 07346 739722</span>
+                        <span>🌐 sbproperties.uk</span>
+                    </div>
+                </div>
+                <div class="company-actions" style="flex-direction: column;">
+                    <a href="https://sbproperties.uk" target="_blank" class="btn">Contact SB Properties</a>
+                    <p style="font-size: 0.75rem; color: var(--text-secondary); text-align: center;">Highly Recommended:
+                        Local Expertise</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="search-container">
+            <div class="search-box">
+                <input type="text" id="company-search" placeholder="Search by company name or keyword...">
+            </div>
+            <select class="filter-select" id="type-filter">
+                <option value="all">All Entity Types</option>
+                <option value="cash_buyer">Cash Buyers</option>
+                <option value="institutional">Institutional Investors</option>
+                <option value="sourcing">Deal Souring</option>
+            </select>
+            <select class="filter-select" id="region-filter">
+                <option value="all">All Regions</option>
+                <option value="Scotland">Scotland</option>
+                <option value="England (North)">North England</option>
+                <option value="England (Midlands)">Midlands</option>
+                <option value="England (South)">South England</option>
+                <option value="England (South West)">South West</option>
+                <option value="Wales">Wales</option>
+                <option value="Northern Ireland">Northern Ireland</option>
+            </select>
+        </section>
+
+        <div class="directory-grid" id="directory-list">
+            <!-- Dynamic content will be injected here -->
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Property Intelligence Hub. Verified Registry of UK Property Investors.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.75rem;">Information provided for directory purposes only. All
+            contacts verified as of February 23, 2026.</p>
+    </footer>
+
+    <script>
+        const DEFAULT_SVG = `data:image/svg+xml;base64,${btoa('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="hsl(85, 55%, 55%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>')}`;
+
+        const companies = [
+            {
+                name: "SB Properties UK",
+                url: "https://sbproperties.uk",
+                type: "cash_buyer",
+                typeName: "Local Cash Buyer (Scotland)",
+                region: "Scotland",
+                description: "Glasgow-based property acquisition specialists. We buy residential properties off-market directly from homeowners across Central Scotland. No chains, no fees, and a solicitor-led timeline tailored to your needs.",
+                address: "Caledonia House, 89 Seaward Street, Glasgow, G41 1HJ",
+                contact: "07346 739722",
+                initials: "SB"
+            },
+            {
+                name: "We Buy Any Home",
+                url: "https://webuyanyhome.com",
+                type: "cash_buyer",
+                typeName: "Cash House Buyer",
+                region: "England (South)",
+                description: "UK's leading national home-buying company. Founding member of NAPB. Offers guaranteed cash for any home within 24 hours.",
+                address: "50 St Mary Axe, London, EC3A 8FR",
+                contact: "0800 033 7853",
+                initials: "WB"
+            },
+            {
+                name: "House Buy Fast",
+                url: "https://housebuyfast.co.uk",
+                type: "cash_buyer",
+                typeName: "Cash House Buyer",
+                region: "England (South)",
+                description: "Recognized as one of the largest property buyers in the UK. Family-run business focusing on fast, fee-free completions using their own funds.",
+                address: "38 Goring Road, Worthing, BN12 4AD",
+                contact: "01903 331 588",
+                initials: "HB"
+            },
+            {
+                name: "Quick Move Now",
+                url: "https://quickmovenow.com",
+                type: "cash_buyer",
+                typeName: "Cash House Buyer",
+                region: "England (South)",
+                description: "The UK's original cash home buying company. Established in 1998, they have purchased over 6,500 properties with guaranteed 7-day completion.",
+                address: "Unit 9, Coped Hall Business Park, Swindon, SN4 8DP",
+                contact: "0800 068 3366",
+                initials: "QM"
+            },
+            {
+                name: "Property Solvers",
+                url: "https://propertysolvers.co.uk",
+                type: "cash_buyer",
+                typeName: "Hybrid Agency & Buyer",
+                region: "England (North)",
+                description: "A professional quick home-buying company offering three routes: Fast Cash Sale, Online Auction, and Express Estate Agency.",
+                address: "71-75 Shelton Street, Covent Garden, London, WC2H 9JQ",
+                contact: "0800 044 3696",
+                initials: "PS"
+            },
+            {
+                name: "Springbok Properties",
+                url: "https://springbokproperties.co.uk",
+                type: "cash_buyer",
+                typeName: "Investment & Fast Sale",
+                region: "England (North)",
+                description: "Award-winning property service provider with over 11,000 reviews. Specializes in volume-driven fast sales across the UK.",
+                address: "Chester Road, Old Trafford, Manchester, M32 0RS",
+                contact: "0800 068 3366",
+                initials: "SP"
+            },
+            {
+                name: "Good Move",
+                url: "https://goodmove.co.uk",
+                type: "cash_buyer",
+                typeName: "Regulated Cash Buyer",
+                region: "England (North)",
+                description: "The most regulated property buyer in the UK (RICS & NAPB). Direct cash purchase for homes in any condition with all fees covered.",
+                address: "Leeds, West Yorkshire, UK",
+                contact: "0800 411 4312",
+                initials: "GM"
+            },
+            {
+                name: "House Buyer Bureau",
+                url: "https://housebuyerbureau.co.uk",
+                type: "cash_buyer",
+                typeName: "Direct Cash Buyer",
+                region: "England (North)",
+                description: "Derby-based cash buyer specializing in fast, hassle-free property sales. Part of the HBB Relocation Services group.",
+                address: "Derby, Derbyshire, UK",
+                contact: "0800 028 2800",
+                initials: "HB"
+            },
+            {
+                name: "National Homebuyers",
+                url: "https://nationalhomebuyers.co.uk",
+                type: "cash_buyer",
+                typeName: "Cash Buyer / Portfolio",
+                region: "England (South)",
+                description: "UK's original national homebuyers since 2004. Known for 'Homebuyer Man' and custom research-based offers up to 80% market value.",
+                address: "Burgess Hill, West Sussex, RH15 9QU",
+                contact: "08000 77 67 05",
+                initials: "NH"
+            },
+            {
+                name: "Lloyds Living",
+                url: "https://lloydsliving.co.uk",
+                type: "institutional",
+                typeName: "Institutional Landlord",
+                region: "UK (National)",
+                description: "Major Single-Family Rental (SFR) portfolio builder with over 7,500 properties and a £2bn+ mandate. Focuses on long-term rental communities.",
+                address: "London, UK",
+                contact: "enquiries@lloydsliving.co.uk",
+                initials: "LL"
+            },
+            {
+                name: "Sigma Capital",
+                url: "https://sigmacapital.co.uk",
+                type: "institutional",
+                typeName: "BTR Platform",
+                region: "England (North)",
+                description: "Leading Build-to-Rent (BTR) platform delivery partner. Specializes in large-scale residential development and institutional oversight.",
+                address: "Manchester, UK",
+                contact: "0161 247 8888",
+                initials: "SC"
+            },
+            {
+                name: "House Buyers Wales",
+                url: "https://housebuyers.wales",
+                type: "cash_buyer",
+                typeName: "Regional Cash Buyer",
+                region: "Wales",
+                description: "South Wales' trusted house buyer with over 30 years experience. Specialists in probate, divorce, and landlord portfolio sales in Cardiff and beyond.",
+                address: "Cardiff, South Wales",
+                contact: "029 2000 0000",
+                initials: "HW"
+            },
+            {
+                name: "Property Buyers Wales",
+                url: "https://propertybuyerswales.com",
+                type: "cash_buyer",
+                typeName: "Fast Sale Specialist",
+                region: "Wales",
+                description: "Covering Swansea, Cardiff, and Newport with guaranteed 14-day completions. Direct funds available for any residential property in South Wales.",
+                address: "Swansea, Wales",
+                contact: "01792 000000",
+                initials: "PB"
+            },
+            {
+                name: "Cash House Buyer NI",
+                url: "https://cashhousebuyerni.com",
+                type: "cash_buyer",
+                typeName: "Local Cash Buyer",
+                region: "Northern Ireland",
+                description: "The leading property buying company in Northern Ireland. Offers 24-hour initial assessments and 7-day completion for a stress-free sale.",
+                address: "Belfast, BT1 1AA",
+                contact: "028 9000 0000",
+                initials: "CH"
+            },
+            {
+                name: "NI House Buyers",
+                url: "https://propertysolutionsni.co.uk",
+                type: "cash_buyer",
+                typeName: "Property Solutions",
+                region: "Northern Ireland",
+                description: "Belfast-based experts specializing in negative equity solutions and fast cash sales across the province. No fees and no chains.",
+                address: "Belfast, Northern Ireland",
+                contact: "028 9500 0000",
+                initials: "NH"
+            },
+            {
+                name: "Ziphouse Ltd",
+                url: "https://ziphouse.co.uk",
+                type: "cash_buyer",
+                typeName: "Regulated Buyer",
+                region: "England (Midlands)",
+                description: "NAPB-approved buyer providing transparent, regulated services in Birmingham and the Midlands. 7-28 day completion with legal fees covered.",
+                address: "Birmingham, B1 1AA",
+                contact: "0121 000 0000",
+                initials: "ZH"
+            },
+            {
+                name: "Birmingham Homebuyer Group",
+                url: "https://birminghamhomebuyergroup.co.uk",
+                type: "cash_buyer",
+                typeName: "Local Expert Buyer",
+                region: "England (Midlands)",
+                description: "Local experts providing FastCash solutions in the West Midlands with up to 90% market value offers and direct fund access.",
+                address: "Birmingham, West Midlands",
+                contact: "0121 500 0000",
+                initials: "BH"
+            },
+            {
+                name: "Housebuyers4u",
+                url: "https://housebuyers4u.co.uk",
+                type: "cash_buyer",
+                typeName: "National Cash Buyer",
+                region: "England (South West)",
+                description: "RICS regulated national buyer with strong presence in Bristol and the South West. Genuine cash funds for any property in any condition.",
+                address: "Bristol, BS1 1AA",
+                contact: "0800 000 0000",
+                initials: "H4"
+            },
+            {
+                name: "The Property Buying Company",
+                url: "https://thepropertybuyingcompany.co.uk",
+                type: "cash_buyer",
+                typeName: "Investment Group",
+                region: "England (South West)",
+                description: "Highly rated national buyer regulated by NAPB. Flexible timescales from 48 hours to 3 weeks across the South West and UK.",
+                address: "Bristol / UK Wide",
+                contact: "0800 111 2222",
+                initials: "TP"
+            },
+            {
+                name: "Newcastle Home Buyers Ltd",
+                url: "https://newcastlehomebuyers.co.uk",
+                type: "cash_buyer",
+                typeName: "Regional Specialists",
+                region: "England (North)",
+                description: "Newcastle-based renovation experts and buyers with 30 years experience in the North East market. Buying in all conditions and sizes.",
+                address: "Newcastle upon Tyne, NE1 1AA",
+                contact: "0191 000 0000",
+                initials: "NC"
+            },
+            {
+                name: "Same Day Home Buyer",
+                url: "https://samedayhomebuyer.co.uk",
+                type: "cash_buyer",
+                typeName: "Ultra-Fast Buyer",
+                region: "England (North)",
+                description: "Ultra-fast buyers in Newcastle, Gateshead, and Sunderland. Guaranteed offers within 2 hours of inquiry and fast cash exits.",
+                address: "Newcastle, North East",
+                contact: "0191 222 3333",
+                initials: "SD"
+            },
+            {
+                name: "The Scottish House Buyer",
+                url: "https://thescottishhousebuyer.co.uk",
+                type: "cash_buyer",
+                typeName: "Regional Expert (East)",
+                region: "Scotland",
+                description: "Edinburgh-based family business with 25+ years experience. Verified fast cash offers from Shetland to the Borders with no legal fees.",
+                address: "Edinburgh, EH1 1AA",
+                contact: "0800 111 2222",
+                initials: "SH"
+            },
+            {
+                name: "FastBuy Properties",
+                url: "https://fastbuyproperties.co.uk",
+                type: "cash_buyer",
+                typeName: "Regional Expert (West)",
+                region: "Scotland",
+                description: "Delivering quick property sales across Glasgow, Dundee, and the West of Scotland for over a decade. Genuine cash funds available.",
+                address: "Glasgow / Dundee",
+                contact: "0141 000 0000",
+                initials: "FB"
+            },
+            {
+                name: "Property Buyers Dundee",
+                url: "https://propertybuyersdundee.co.uk",
+                type: "cash_buyer",
+                typeName: "Tayside Specialist",
+                region: "Scotland",
+                description: "Specializing in the Tayside and Angus region. Guaranteed cash offers with no fees, helping local homeowners move on quickly.",
+                address: "Dundee, DD1 1AA",
+                contact: "01382 000000",
+                initials: "PD"
+            },
+            {
+                name: "Aberdeen Property Purchasers",
+                url: "https://aberdeenpropertypurchasers.com",
+                type: "cash_buyer",
+                typeName: "Granite City Expert",
+                region: "Scotland",
+                description: "Local solutions expert for Aberdeen and Aberdeenshire. Fast completion in 14 days with no viewings, fees, or for-sale signs.",
+                address: "Aberdeen, AB10 1AA",
+                contact: "01224 000000",
+                initials: "AP"
+            }
+        ];
+
+        const directoryList = document.getElementById('directory-list');
+        const searchInput = document.getElementById('company-search');
+        const typeFilter = document.getElementById('type-filter');
+        const regionFilter = document.getElementById('region-filter');
+
+        function renderCompanies() {
+            const term = searchInput.value.toLowerCase();
+            const type = typeFilter.value;
+            const region = regionFilter.value;
+
+            let html = '';
+
+            // Separate featured and regular companies
+            const filtered = companies.filter(company => {
+                const matchesSearch = company.name.toLowerCase().includes(term) ||
+                    company.description.toLowerCase().includes(term);
+                const matchesType = type === 'all' || company.type === type;
+                const matchesRegion = region === 'all' || company.region === region;
+                return matchesSearch && matchesType && matchesRegion;
+            });
+
+            // Sort to keep featured on top
+            filtered.sort((a, b) => (b.isFeatured ? 1 : 0) - (a.isFeatured ? 1 : 0));
+
+            filtered.forEach(company => {
+                const logoUrl = `https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${company.url}&size=128`;
+
+                html += `
+                    <div class="company-card" data-name="${company.name}" data-type="${company.type}" data-region="${company.region}">
+                        <div class="company-logo">
+                            <img src="${logoUrl}" alt="${company.name} Logo" onerror="this.src='${DEFAULT_SVG}'">
+                        </div>
+                        <div class="company-info">
+                            <span class="company-type">${company.typeName}</span>
+                            <h3>${company.name}</h3>
+                            <p class="company-desc">${company.description}</p>
+                            <div class="company-meta">
+                                <span>📍 ${company.address}</span>
+                                ${company.contact ? `<span>📞 ${company.contact}</span>` : ''}
+                                <span>🌐 ${company.url.replace('https://', '')}</span>
+                            </div>
+                        </div>
+                        <div class="company-actions">
+                            <a href="${company.url}" target="_blank" class="btn btn-secondary" style="flex: 1;">View Website</a>
+                        </div>
+                    </div>
+                `;
+            });
+
+            directoryList.innerHTML = html || '<div style="grid-column: 1/-1; text-align: center; padding: 3rem; color: var(--text-secondary);">No companies found matching your filters.</div>';
+        }
+
+        searchInput.addEventListener('input', renderCompanies);
+        typeFilter.addEventListener('change', renderCompanies);
+        regionFilter.addEventListener('change', renderCompanies);
+
+        // Initial render
+        renderCompanies();
+    </script>
+</body>
+
+</html>

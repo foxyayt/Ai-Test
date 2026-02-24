@@ -1,0 +1,27 @@
+name: Deploy AI Agent to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # Set this to your default branch name
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Inject API Key
+        run: |
+          # Replace the placeholder in ai-agent.html with the GitHub Secret
+          sed -i 's/__OPENROUTER_API_KEY__/${{ secrets.OPENROUTER_API_KEY }}/g' ai-agent.html
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: . # The folder the action should deploy.
+          branch: gh-pages # The branch the action should deploy to.
